@@ -1,0 +1,21 @@
+FROM ubuntu:18.04
+
+RUN apt-get update -y && apt-get install -y python3-pip python3-dev git gcc g++ dos2unix
+
+COPY ./requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
+
+COPY . /app
+
+RUN dos2unix run-reproducibility-tests.sh
+RUN dos2unix run-pipeline.sh && apt-get --purge remove -y dos2unix
+
+RUN chmod +x run-pipeline.sh
+RUN chmod +x run-reproducibility-tests.sh
+
+ENTRYPOINT ["sh"]
+

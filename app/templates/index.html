@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Xuefei Liu">
+
+    <title>Application Results?</title>
+    <link href="{{ url_for('static', filename='product.css') }}" rel="stylesheet">
+
+  </head>
+
+
+<body style="background-color:#f3f6e5; font-family:Arial">
+
+    <div class="header-image" style="
+    background-image: url(https://www.ox.ac.uk/sites/files/oxford/styles/ow_large_feature/public/field/field_image_main/b_AllSoulsquad.jpg?itok=N1GzQbrQ);
+    background-repeat: no-repeat;
+    background-size:  100%;"
+    >
+
+            <h1 class="title-url" style="text-align: center;
+                        padding: 250px 0;
+                        ">
+              <a style="background-color: #d1e3f1;
+                        " href="{{ url_for('index') }}">Going For Master? Graduate Admission Prediction</a>
+            </h1>
+    </div>
+
+
+
+    <div>
+        <table style="text-align: left;
+                        width:50%;
+                        margin-left:15%;
+                        margin-right:15%;"
+        >
+            <tbody><tr>
+                <th>Entry</th>
+                <th>Explanation</th>
+            </tr>
+            <tr>
+                <td>GRE Score</td>
+                <td>(out of 340)</td>
+            </tr>
+            <tr>
+                <td>TOEFL Score</td>
+                <td>(out of 120)</td>
+            </tr>
+            <tr>
+                <td>University Rating</td>
+                <td>(out of 5)</td>
+            </tr>
+            <tr>
+                <td>Personal Statement Strength</td>
+                <td>(out of 5)</td>
+            </tr>
+            <tr>
+                <td>Letter of Recommendation Strength</td>
+                <td>(out of 5)</td>
+            </tr>
+            <tr>
+                <td>Undergraduate GPA</td>
+                <td>(out of 4)</td>
+            </tr>
+            <tr>
+                <td>Research Experience</td>
+                <td>(Yes=1, No=0)</td>
+            </tr>
+
+        </tbody></table>
+
+    </div>
+
+
+
+
+
+
+    <table>
+        <h3> Please enter your application information: </h3>
+
+    </table>
+
+
+    <form action="{{ url_for('index') }}" method=post class=make-pred>
+      <dl>
+        <input type=text size=20 name=gre placeholder="GRE Score">
+        <input type=text size=20 name=toefl placeholder="TOEFL Score">
+        <input type=text size=20 name=univ_rating placeholder="University Rating">
+          <input type=text size=20 name=sop placeholder="Statement of Purpose">
+        <input type=text size=20 name=lor placeholder="Letter of Recommendation">
+        <input type=text size=20 name=gpa placeholder="Undergraduate GPA">
+          <input type=text size=20 name=research placeholder="Research Experience">
+
+        <input type=submit value=Add>
+      </dl>
+    </form>
+
+    <div class="Prediction">
+
+    </div>
+
+    <div class="row" style=
+            "content: "";
+            display: table;
+            clear: both;"
+    >
+
+      <div class="column" style="float: left; width: 50%;">
+
+          <h3>Your admitted prediction: {{ pred.admit }}</h3>
+
+          <p>🎓GRE: {{ pred.gre }} &emsp;
+              🎓TOEFL: {{ pred.toefl }} &emsp;
+              🎓University rating: {{ pred.univ_rating }} &emsp;
+              🎓Personal Statement: {{ pred.sop }} </p>
+          <p>🎓Recommendation Letter: {{ pred.lor }} &emsp;
+              🎓GPA: {{ pred.cgpa }} &emsp;
+              🎓Research: {{ pred.research }}</p>
+
+      </div>
+
+      <div class="column" style="float: left; width: 50%;">
+          <h3>Top School List</h3>
+          <ol>
+              <li> <a href="https://www.princeton.edu/" target="_blank">Princeton University</a> </li>
+              <li> <a href="https://www.harvard.edu/" target="_blank">Harvard University</a> </li>
+              <li> <a href="https://www.columbia.edu/" target="_blank">Columbia University</a> </li>
+              <li> <a href="https://www.mit.edu/" target="_blank">MIT</a> </li>
+              <li> <a href="https://www.yale.edu/" target="_blank">Yale University</a> </li>
+              <li> <a href="https://www.standord.edu/" target="_blank">Stanford University</a> </li>
+              <li> <a href="https://www.uchicago.edu/" target="_blank">University of Chicago</a> </li>
+              <li> <a href="https://www.upenn.edu/" target="_blank">University of Pennsylvania</a> </li>
+              <li> <a href="https://www.northwestern.edu/" target="_blank">Northwestern University</a> </li>
+              <li> <a href="https://www.duke.edu/" target="_blank">Duke University</a> </li>
+
+
+
+
+          </ol>
+
+
+
+      </div>
+    </div>
+
+</body>
+</html>
